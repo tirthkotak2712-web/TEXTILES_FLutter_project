@@ -22,29 +22,49 @@ class ShopScreen extends StatelessWidget {
     final arrivals = store.newArrivals;
     return Scaffold(
       drawer: const UserDrawer(),
-      appBar: const TextilesAppBar(title: AppText.brandTitle, titleColor: AppColors.green, showMenu: true, showCart: true),
+      appBar: const TextilesAppBar(
+        title: AppText.brandTitle,
+        titleColor: AppColors.green,
+        showMenu: true,
+        showCart: true,
+      ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 20),
         children: [
           TextField(
             readOnly: true,
-            onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const SearchScreen())),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(builder: (_) => const SearchScreen()),
+            ),
             decoration: InputDecoration(
               hintText: 'Search T-Shirts, Linens...',
               prefixIcon: const Icon(Icons.search, color: AppColors.muted),
               filled: true,
               fillColor: AppColors.field,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(28), borderSide: BorderSide.none),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(28),
+                borderSide: BorderSide.none,
+              ),
             ),
           ),
           const SizedBox(height: 16),
           Row(
             children: [
-              const Text('Recent Searches', style: TextStyle(fontWeight: FontWeight.w700)),
+              const Text(
+                'Recent Searches',
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
               const Spacer(),
               GestureDetector(
                 onTap: store.clearSearches,
-                child: const Text('Clear All', style: TextStyle(color: AppColors.green, fontWeight: FontWeight.w700)),
+                child: const Text(
+                  'Clear All',
+                  style: TextStyle(
+                    color: AppColors.green,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
             ],
           ),
@@ -61,7 +81,12 @@ class ShopScreen extends StatelessWidget {
                       label: Text(term),
                       backgroundColor: const Color(0xFFF1F1F1),
                       side: BorderSide.none,
-                      onPressed: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => SearchScreen(initialQuery: term))),
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (_) => SearchScreen(initialQuery: term),
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -79,12 +104,16 @@ class ShopScreen extends StatelessWidget {
                     Image.asset(
                       banner.image,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, _, _) => const ColoredBox(color: Color(0xFFE7E2D8)),
+                      errorBuilder: (_, _, _) =>
+                          const ColoredBox(color: Color(0xFFE7E2D8)),
                     ),
                     DecoratedBox(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.black.withValues(alpha: 0.55), Colors.black.withValues(alpha: 0.05)],
+                          colors: [
+                            Colors.black.withValues(alpha: 0.55),
+                            Colors.black.withValues(alpha: 0.05),
+                          ],
                         ),
                       ),
                     ),
@@ -93,17 +122,29 @@ class ShopScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            color: AppColors.green,
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            child: Text(banner.eyebrow, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w800)),
+                          Text(
+                            banner.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 26,
+                              fontWeight: FontWeight.w800,
+                              height: 1.05,
+                            ),
                           ),
-                          const Spacer(),
-                          Text(banner.title, style: const TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w800, height: 1.05)),
                           const SizedBox(height: 10),
                           FilledButton(
-                            style: FilledButton.styleFrom(backgroundColor: Colors.white, foregroundColor: AppColors.ink),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const CategoryProductsScreen(categoryId: 'winter'))),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: AppColors.ink,
+                            ),
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (_) => const CategoryProductsScreen(
+                                  categoryId: 'winter',
+                                ),
+                              ),
+                            ),
                             child: Text('${banner.action}  →'),
                           ),
                         ],
@@ -115,7 +156,10 @@ class ShopScreen extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 18),
-          const Text('Categories(Men)', style: TextStyle(fontWeight: FontWeight.w700)),
+          const Text(
+            'Categories(Men)',
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,19 +168,37 @@ class ShopScreen extends StatelessWidget {
                 context,
                 label: 'T-Shirts',
                 image: AppImages.monkeyTee,
-                onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const CategoryProductsScreen(categoryId: 'tshirts'))),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        const CategoryProductsScreen(categoryId: 'tshirts'),
+                  ),
+                ),
               ),
               _categoryBubble(
                 context,
                 label: 'Shirts',
                 image: AppImages.stripeShirt,
-                onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const CategoryProductsScreen(categoryId: 'shirts'))),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        const CategoryProductsScreen(categoryId: 'shirts'),
+                  ),
+                ),
               ),
               _categoryBubble(
                 context,
                 label: 'Jeans',
                 image: AppImages.blackJeans,
-                onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const CategoryProductsScreen(categoryId: 'jeans'))),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        const CategoryProductsScreen(categoryId: 'jeans'),
+                  ),
+                ),
               ),
               _moreBubble(context),
             ],
@@ -149,15 +211,38 @@ class ShopScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('New Arrivals', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
+                    Text(
+                      'New Arrivals',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                     SizedBox(height: 2),
-                    Text('The latest curated textiles for your home.', style: TextStyle(color: AppColors.muted, fontSize: 13)),
+                    Text(
+                      'The latest curated textiles for your home.',
+                      style: TextStyle(color: AppColors.muted, fontSize: 13),
+                    ),
                   ],
                 ),
               ),
               GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const CategoryProductsScreen(categoryId: 'new'))),
-                child: const Text('View\nAll', textAlign: TextAlign.right, style: TextStyle(color: AppColors.green, fontWeight: FontWeight.w800, decoration: TextDecoration.underline)),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        const CategoryProductsScreen(categoryId: 'new'),
+                  ),
+                ),
+                child: const Text(
+                  'View\nAll',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: AppColors.green,
+                    fontWeight: FontWeight.w800,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
               ),
             ],
           ),
@@ -166,14 +251,24 @@ class ShopScreen extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: arrivals.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 14, crossAxisSpacing: 12, childAspectRatio: 0.62),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 14,
+              crossAxisSpacing: 12,
+              childAspectRatio: 0.62,
+            ),
             itemBuilder: (context, index) {
               final product = arrivals[index];
               return ProductCard(
                 product: product,
                 showHeart: true,
                 showRating: true,
-                onTap: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => ProductDetailsScreen(productId: product.id))),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => ProductDetailsScreen(productId: product.id),
+                  ),
+                ),
               );
             },
           ),
@@ -183,7 +278,12 @@ class ShopScreen extends StatelessWidget {
     );
   }
 
-  Widget _categoryBubble(BuildContext context, {required String label, required String image, required VoidCallback onTap}) {
+  Widget _categoryBubble(
+    BuildContext context, {
+    required String label,
+    required String image,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -197,7 +297,10 @@ class ShopScreen extends StatelessWidget {
                 child: Image.asset(
                   image,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, _, _) => const ColoredBox(color: Color(0xFFF3F1EC), child: Icon(Icons.checkroom_outlined)),
+                  errorBuilder: (_, _, _) => const ColoredBox(
+                    color: Color(0xFFF3F1EC),
+                    child: Icon(Icons.checkroom_outlined),
+                  ),
                 ),
               ),
             ),
